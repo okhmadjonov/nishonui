@@ -1,0 +1,31 @@
+.appContainer {
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  .faceid_block {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .selector {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    border-radius: 12px;
+  }
+
+  .results {
+    margin-top: 20px;
+  }
+}

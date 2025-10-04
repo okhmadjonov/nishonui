@@ -1,0 +1,94 @@
+.results {
+    padding: 20px;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+
+
+        .search {
+            min-width: 320px;
+            width: 100%;
+        }
+
+        button {
+            height: 30px;
+        }
+
+    }
+
+    .tableWrap {
+        background: #fff;
+        border-radius: 8px;
+        padding: 12px;
+        box-shadow: 0 6px 18px rgba(12, 20, 30, 0.06);
+
+        .ant-table {
+            .ant-table-thead>tr>th {
+                background: #fafafa;
+                font-weight: 600;
+            }
+
+            .ant-table-tbody>tr>td {
+                vertical-align: middle;
+            }
+        }
+    }
+
+    .avatar {
+        border-radius: 8px;
+        object-fit: cover;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .fullName {
+        font-weight: 600;
+        color: #111;
+    }
+
+    .pnfl {
+        font-family: monospace;
+        color: #444;
+    }
+
+    .baho {
+        font-weight: 700;
+        color: #232323;
+    }
+
+    .natijalar {
+        color: #666;
+    }
+
+    @media (max-width: 880px) {
+        .header {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 12px;
+
+            .controls {
+                justify-content: space-between;
+
+                .search {
+                    min-width: 100%;
+                }
+            }
+        }
+
+        .tableWrap {
+            padding: 8px;
+
+            .ant-table {
+                .ant-table-cell {
+                    padding: 8px 10px;
+                }
+            }
+        }
+    }
+}

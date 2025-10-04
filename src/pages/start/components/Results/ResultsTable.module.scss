@@ -1,0 +1,94 @@
+.containerResults {
+    margin-top: 25px;
+    overflow: hidden;
+
+    h3 {
+        color: #2d2d2d;
+        font-weight: 400;
+        margin-bottom: 20px;
+        font-size: clamp(1rem, 1vw, 1.5rem);
+    }
+
+    .yuklab_olish {
+        width: 120px;
+        height: 30px;
+        border: none;
+        background-color: green;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        float: inline-end;
+        justify-content: space-around;
+        margin-bottom: 10px;
+
+        &:hover {
+            opacity: 0.8;
+            transition: all 0.3s ease-in-out;
+        }
+
+        p {
+            font-size: clamp(0.65rem, 1vw, 0.85rem);
+            padding-top: 3px;
+        }
+
+        span {
+            svg {
+                margin-top: 5px;
+                font-size: clamp(0.75rem, 1vw, 1rem);
+            }
+        }
+    }
+}
+
+.resultsHeader {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.wrapCell {
+    white-space: normal !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+    line-height: 1.5;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+}
+
+.wrapCellInner {
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+:global {
+    .ant-table {
+        width: 100%;
+    }
+
+
+
+    .ant-table-thead>tr>th,
+    .ant-table-tbody>tr>td {
+        // vertical-align: ceil($number: 8);
+        white-space: normal;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+        line-height: 1.5;
+
+
+    }
+
+    .ant-table-tbody>tr>td:first-child {
+        font-variant-numeric: tabular-nums;
+
+    }
+
+    .ant-image-img {
+        display: block;
+    }
+}

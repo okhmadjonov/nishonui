@@ -1,0 +1,82 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1011;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  .modal {
+    background: #222;
+    width: 100%;
+    max-width: 360px;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    animation: fadeIn 0.3s ease;
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h4 {
+      margin: 0;
+      padding: 0.75rem 1rem;
+      font-size: clamp(0.5rem, 1vw, 1rem);
+      color: #ccc;
+      background-color: #333;
+      border-bottom: 1px solid #444;
+      text-align: center;
+      font-weight: 400;
+    }
+
+    .modalContent {
+      padding: 1.5rem;
+      text-align: center;
+
+      .resultText {
+        margin: 0.5rem 0 1rem;
+        font-size: clamp(0.5rem, 1vw, 1rem);
+        color: #ccc;
+
+        strong {
+          color: #9d5f01;
+          font-size: clamp(0.5rem, 1vw, 1rem);
+        }
+      }
+
+      .modalActions {
+        display: flex;
+        justify-content: center;
+
+        .modalButton {
+          padding: 5px 15px;
+          font-size: clamp(0.5rem, 1vw, 0.65rem);
+          color: #fff;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          font-weight: 400;
+          transition: background-color 0.2s ease;
+          background: linear-gradient(135deg, #5a4b3c, #2e2a26);
+          box-shadow: 0 4px 10px rgba(50, 40, 30, 0.4);
+
+          &:hover:not(:disabled) {
+            background: linear-gradient(135deg, #6b5a48, #3a352f);
+            transform: translateY(-2px);
+          }
+        }
+      }
+    }
+  }
+}

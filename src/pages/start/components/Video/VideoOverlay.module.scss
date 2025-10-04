@@ -1,0 +1,455 @@
+// VideoOverlay.module.scss
+.videoContainer {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 16px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.videoWrapper {
+  position: relative;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: #000;
+  min-height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.videoElement {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
+.videoOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-radius: 12px;
+}
+
+.hiddenCanvas {
+  display: none;
+}
+
+.targetOnlyView {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 3px solid #52c41a;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(82, 196, 26, 0.4),
+    0 0 40px rgba(82, 196, 26, 0.2);
+  z-index: 10;
+  max-width: 90%;
+  max-height: 70%;
+  object-fit: contain;
+}
+
+.targetToggle {
+  margin: 16px 0;
+  text-align: center;
+}
+
+.toggleActive,
+.toggleInactive {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.toggleActive {
+  background: linear-gradient(to right, #ff4d4f, #ff7875);
+  color: white;
+
+  &:hover:not(:disabled) {
+    background: linear-gradient(to right, #d9363e, #ff7875);
+  }
+}
+
+.toggleInactive {
+  background: linear-gradient(to right, #52c41a, #73d13d);
+  color: white;
+
+  &:hover:not(:disabled) {
+    background: linear-gradient(to right, #389e0d, #73d13d);
+  }
+}
+
+.cameraError {
+  padding: 24px;
+  text-align: center;
+  background: #fff3f3;
+  border: 1px solid #ffcdd2;
+  border-radius: 12px;
+  color: #d32f2f;
+  margin: 20px 0;
+
+  p {
+    margin: 8px 0;
+    font-size: 16px;
+  }
+}
+
+.cameraControls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 20px 0;
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+}
+
+.cameraSelect {
+  flex: 1;
+  padding: 10px 16px;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  background: white;
+  font-size: 14px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+
+  &:focus {
+    outline: none;
+    border-color: #1890ff;
+    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+  }
+
+  &:disabled {
+    background: #f5f5f5;
+    color: #999;
+    cursor: not-allowed;
+  }
+}
+
+.cameraButton {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 90px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.startButton {
+  background: linear-gradient(to right, #52c41a, #73d13d);
+  color: white;
+
+  &:hover:not(:disabled) {
+    background: linear-gradient(to right, #389e0d, #52c41a);
+  }
+}
+
+.stopButton {
+  background: linear-gradient(to right, #ff4d4f, #ff7875);
+  color: white;
+
+  &:hover:not(:disabled) {
+    background: linear-gradient(to right, #d9363e, #ff4d4f);
+  }
+}
+
+.statusPanel {
+  margin: 20px 0;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+}
+
+.connectionStatus {
+  font-weight: 600;
+  margin-bottom: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.connected {
+  background: #f6ffed;
+  border: 1px solid #b7eb8f;
+  color: #389e0d;
+}
+
+.disconnected {
+  background: #fff2f0;
+  border: 1px solid #ffccc7;
+  color: #d9363e;
+}
+
+.scoreDisplay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  background: white;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.scoreLabel {
+  font-weight: 600;
+  color: #262626;
+  font-size: 16px;
+}
+
+.scoreValue {
+  font-size: 28px;
+  font-weight: 800;
+  color: #1890ff;
+  text-shadow: 0 2px 4px rgba(24, 144, 255, 0.2);
+}
+
+.detections {
+  font-size: 14px;
+  color: #8c8c8c;
+  font-style: italic;
+  background: #f9f9f9;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.processedImageContainer {
+  margin-top: 24px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+  text-align: center;
+
+  h4 {
+    margin: 0 0 16px 0;
+    color: #262626;
+    font-weight: 600;
+    font-size: 18px;
+  }
+}
+
+.processedImage {
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e8e8e8;
+}
+
+// Error message styles
+.errorMessage {
+  margin: 16px 0;
+  padding: 14px;
+  background: #fff2f0;
+  border: 1px solid #ffccc7;
+  border-radius: 8px;
+  color: #d9363e;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+
+.errorIcon {
+  font-size: 20px;
+}
+
+/* Red alert overlay shown on detection */
+.matchAlert {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(220, 38, 38, 0.35);
+  border: 3px solid #ef4444;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.3) inset;
+  color: #fff;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.4px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  z-index: 3;
+  border-radius: 12px;
+  backdrop-filter: blur(2px);
+}
+
+.targetIndicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  border: 2px dashed rgba(82, 196, 26, 0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;
+  box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.4);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background: #52c41a;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(82, 196, 26, 0.3);
+  }
+}
+
+// Detection status indicator
+.detectionStatus {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 5;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  &::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ff4d4f;
+    animation: pulse 1.5s infinite;
+  }
+
+  &.detected::before {
+    background: #52c41a;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.6;
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .videoContainer {
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .cameraControls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .cameraSelect {
+    width: 100%;
+  }
+
+  .scoreDisplay {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .scoreValue {
+    font-size: 24px;
+  }
+
+  .targetOnlyView {
+    max-width: 85%;
+    max-height: 60%;
+  }
+
+  .targetIndicator {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .videoWrapper {
+    min-height: 280px;
+  }
+
+  .targetIndicator {
+    width: 200px;
+    height: 200px;
+  }
+
+  .cameraButton {
+    min-width: auto;
+    padding: 10px 16px;
+  }
+
+  .toggleActive,
+  .toggleInactive {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+}

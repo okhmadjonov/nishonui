@@ -1,0 +1,158 @@
+.controlPanel {
+
+  .controls {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 1rem;
+
+    .selectGroup {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .optionGroup {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 111111;
+    }
+
+    .optionItem {
+      position: relative;
+      padding: 8px 14px;
+      min-width: 140px;
+      border: 1px solid #555;
+      border-radius: 8px;
+      color: #eaeaea;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #1a1a1a;
+      user-select: none;
+
+      &.active {
+        color: #ff9800;
+        border: 1px solid #ff9800;
+      }
+
+      .optionLabel {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 600;
+      }
+
+      .bulletCloud {
+        position: absolute;
+        bottom: calc(-250% + 10px);
+        left: 50%;
+        transform: translateX(-50%);
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(36px, 1fr));
+        gap: 6px;
+        padding: 10px;
+        background: #2a2a2a;
+        border: 1px solid #444;
+        border-radius: 10px;
+        max-width: 260px;
+        width: max-content;
+        min-width: 180px;
+        z-index: 1111111111111;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+      }
+
+      .bulletItem {
+        background: #3c3c3c;
+        color: #f0f0f0;
+        padding: 6px 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.85rem;
+        text-align: center;
+        transition: all 0.15s ease;
+
+        &:hover {
+          background: #ff9800;
+          color: #fff;
+        }
+
+        &.active {
+          background: #ff9800;
+          color: #fff;
+          font-weight: 700;
+        }
+      }
+    }
+
+    .controlbuttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+
+      .button {
+        height: 50px;
+        width: 120px;
+        padding: 10px 10px;
+        font-size: clamp(0.5rem, 1vw, 0.75rem);
+        font-weight: 500;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        color: #f0f0f0;
+
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+      }
+
+      .startButton {
+        background: linear-gradient(135deg, #3c3c3c, #1f1f1f);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+
+        &:hover:not(:disabled) {
+          background: linear-gradient(135deg, #4a4a4a, #2a2a2a);
+          transform: translateY(-2px);
+        }
+      }
+
+      .continueButton {
+        background-color: green;
+        color: white;
+      }
+
+      .resetButton {
+        background: linear-gradient(135deg, #5a4b3c, #2e2a26);
+        box-shadow: 0 4px 10px rgba(50, 40, 30, 0.4);
+
+        &:hover:not(:disabled) {
+          background: linear-gradient(135deg, #6b5a48, #3a352f);
+          transform: translateY(-2px);
+        }
+      }
+
+      .finishButton {
+        background: linear-gradient(135deg, #3d171f, #af0202);
+        box-shadow: 0 4px 10px rgba(30, 50, 50, 0.4);
+
+        &:hover:not(:disabled) {
+          background: linear-gradient(135deg, #757a7a, #023135);
+          transform: translateY(-2px);
+        }
+      }
+    }
+
+
+
+  }
+}

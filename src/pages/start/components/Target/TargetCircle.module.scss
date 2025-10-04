@@ -1,0 +1,161 @@
+.targetContainer {
+  position: relative;
+  width: 100%;
+  max-width: 270px;
+  height: auto;
+  aspect-ratio: 1/1;
+  margin: 0 auto;
+  overflow: hidden;
+  cursor: none;
+
+
+
+
+  @media (max-width: 768px) {
+    width: 85%;
+    max-width: 200px;
+  }
+
+  @media (max-width: 480px) {
+    width: 95%;
+    max-width: 175px;
+  }
+}
+
+.cursorDot {
+  position: absolute;
+  width: 0.1px;
+  height: 0.1px;
+  background: white;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2000;
+  opacity: 0.9;
+}
+
+.targetBackground {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+
+
+}
+
+.ring {
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  font-size: clamp(0.25rem, 0.5vw, 0.4rem);
+  border: 1px solid white;
+
+
+
+}
+
+.green {
+  background-color: rgba(0, 128, 0, 0.8);
+  border: 1px solid white;
+
+
+}
+
+.centerScore {
+  font-size: clamp(0.7rem, 2vw, 0.9rem);
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 11;
+}
+
+.ringLabel {
+  position: absolute;
+  font-weight: bold;
+  user-select: none;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em;
+  height: 1em;
+  font-size: clamp(0.4rem, 0.5vw, 0.5rem);
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.shotsContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+
+
+}
+
+.shotMarker {
+  position: absolute;
+  width: clamp(10px, 2.5vw, 12px);
+  height: clamp(10px, 2.5vw, 12px);
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: shotAppear 0.3s ease-out;
+}
+
+@keyframes shotAppear {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+
+  80% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+.shotImage {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #555;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.shotScore {
+  position: absolute;
+  bottom: clamp(-7px, -1.5vw, -8px);
+  font-size: clamp(0.3rem, 1vw, 0.4rem);
+  font-weight: bold;
+  color: #333;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 1px 3px;
+  border-radius: 4px;
+  min-width: 9px;
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}

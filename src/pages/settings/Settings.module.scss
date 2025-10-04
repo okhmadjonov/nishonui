@@ -1,0 +1,36 @@
+.settings {
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+
+    .title {
+        font-size: clamp(1rem, 1vw, 1.5rem);
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .form {
+        margin-bottom: 20px;
+        padding: 16px;
+        border-radius: 8px;
+    }
+
+    .searchBar {
+        margin-bottom: 16px;
+
+        input {
+            border-radius: 8px;
+            padding: 8px;
+            height: 50px;
+        }
+    }
+
+    .table {
+        border: 1px solid #f0f0f0;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+}

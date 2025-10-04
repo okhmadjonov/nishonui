@@ -1,0 +1,13 @@
+.footer {
+  width: 100%;
+  height: 8vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  color: #2d2d2d;
+  bottom: 0;
+  z-index: 999;
+  font-weight: 600;
+  font-size: clamp(0.65rem, 1vw, 0.95rem);
+}
